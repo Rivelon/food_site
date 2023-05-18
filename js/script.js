@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
 
-      const tabs = document.querySelectorAll('.tableheader__item'),
+      const tabs = document.querySelectorAll('.tabheader__item'),
             tabsContent = document.querySelectorAll('.tabcontent'),
             tabsParent = document.querySelector('.tabheader__items');
          
@@ -28,8 +28,13 @@ window.addEventListener('DOMContentLoaded', () => {
       tabsParent.addEventListener('click', (event) => {
             const target = event.target;
 
-            if(target && target.classList.contains('.tableheader__item')){
-               
+            if(target && target.classList.contains('tabheader__item')){
+               tabs.forEach((item, i) => {
+                  if (target == item) {
+                     hideTabContent();
+                     showTabContent(i);
+                  }
+               });
             }
       });
 });
