@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Timer
 
-  const deadline = "2023-06-11";
+  const deadline = "2023-10-11";
 
   function getTimeRemaining(endtime) {
     let days, hours, minutes, seconds;
@@ -104,13 +104,17 @@ window.addEventListener("DOMContentLoaded", () => {
     modal = document.querySelector(".modal"),
     modalCloseBtn = document.querySelector("[data-close]");
 
-  modalTrigger.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    function openModal(){
       modal.classList.add("show");
       modal.classList.remove("hide");
       document.body.style.overflow = "hidden";
-    });
+  }
+
+  modalTrigger.forEach((btn) => {
+    btn.addEventListener("click", openModal);
   });
+
+  
 
   function closeModal() {
     modal.classList.add("hide");
@@ -127,8 +131,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.code === "Escape" && modal.classList.contains('show')) {
+    if (e.code === "Escape" && modal.classList.contains("show")) {
       closeModal();
     }
   });
+
+  const modalTimerId = setTimeout(openModal, 5000);
 });
