@@ -108,6 +108,7 @@ window.addEventListener("DOMContentLoaded", () => {
       modal.classList.add("show");
       modal.classList.remove("hide");
       document.body.style.overflow = "hidden";
+      clearInterval(modalTimerId);
   }
 
   modalTrigger.forEach((btn) => {
@@ -137,4 +138,15 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   const modalTimerId = setTimeout(openModal, 5000);
+
+  function showModalByScroll(){
+    if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight ){
+      openModal();
+      window.removeEventListener('scroll', showModalByScroll)
+    }
+ } 
+
+  
+
+  window.addEventListener('scroll', showModalByScroll)
 });
