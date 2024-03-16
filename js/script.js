@@ -150,3 +150,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener('scroll', showModalByScroll)
 }); 
+
+
+
+Test()
